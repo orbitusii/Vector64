@@ -60,18 +60,17 @@ public struct Vector64
 
     public double Distance(Vector64 to)
     {
-        double sqrMag = SquareMagnitude(to);
+        double sqrMag = (to - this).SquareMagnitude;
         return Math.Sqrt(sqrMag);
     }
 
-    public double SquareMagnitude (Vector64 to)
+    public double SquareMagnitude
     {
-        double dX = to.x - x;
-        double dY = to.y - y;
-        double dZ = to.z - z;
-
-        double sqrMag = dX * dX + dY * dY + dZ * dZ;
-        return sqrMag;
+        get
+        {
+            double sqrMag = x * x + y * y + z * z;
+            return sqrMag;
+        }
     }
 
     public float AngleBetween(Vector64 to)
